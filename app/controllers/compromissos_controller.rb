@@ -5,7 +5,7 @@ class CompromissosController < ApplicationController
   # GET /compromissos.json
   def index
     @compromissos = Compromisso.all
-    @date = Date.today
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
   # GET /compromissos/1

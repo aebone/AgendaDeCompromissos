@@ -12,11 +12,10 @@ group :doc do
 end
 
 gem "watu_table_builder", :require => "table_builder"
-
 group :development, :test do
   gem 'sqlite3'
 end
-
 group :production do
   gem 'pg', '0.15.1'
 end
+gem 'rails_12factor', group: :production # to heroku serves the assets

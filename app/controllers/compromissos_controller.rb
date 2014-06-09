@@ -5,6 +5,7 @@ class CompromissosController < ApplicationController
   # GET /compromissos.json
   def index
     @compromissos = Compromisso.all
+    @date = Date.today
   end
 
   # GET /compromissos/1

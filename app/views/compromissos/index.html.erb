@@ -1,13 +1,19 @@
 <div id="calendar">
-<%= calendar_for(@compromissos) do |t| %>
-<%= t.head('DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB') %>
-<%= t.day do |day, compromissos| %>
-<%= day.day %>
-<% compromissos.each do |compromisso| %>
-<%= h(compromisso.titulo) %>
-<% end %>
-<% end %>
-<% end %>
+	<h2 id="month">
+		<%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d") %>
+		<%=h @date.strftime("%B %Y") %>
+		<%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d") %>
+	</h2>
+	<%= calendar_for(@compromissos) do |t| %>
+	<%= t.head('DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB') %>
+	<%= t.day do |day, compromissos| %>
+	<%= day.day %>
+	<% compromissos.each do |compromisso| %><br>
+	<%= link_to h(compromisso.titulo), compromisso %><br>
+	<%= link_to 'Editar', edit_compromisso_path(compromisso) %> | <%= link_to 'Deletar', compromisso, method: :delete, data: { confirm: 'Tem certeza?' } %>
+	<% end %>
+	<% end %>
+	<% end %>
 </div>
 
 <%= link_to 'Novo Compromisso', new_compromisso_path %>

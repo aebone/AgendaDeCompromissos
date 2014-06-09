@@ -1,0 +1,29 @@
+<%= form_for(@compromisso) do |f| %>
+  <% if @compromisso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compromisso.errors.count, "error") %> prohibited this compromisso from being saved:</h2>
+
+      <ul>
+      <% @compromisso.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :texto %><br>
+    <%= f.text_area :texto %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

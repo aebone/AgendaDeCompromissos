@@ -1,0 +1,13 @@
+<div id="calendar">
+<%= calendar_for(@compromissos) do |t| %>
+<%= t.head('DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB') %>
+<%= t.day do |day, compromissos| %>
+<%= day.day %>
+<% compromissos.each do |compromisso| %>
+<%= h(compromisso.titulo) %>
+<% end %>
+<% end %>
+<% end %>
+</div>
+
+<%= link_to 'Novo Compromisso', new_compromisso_path %>
